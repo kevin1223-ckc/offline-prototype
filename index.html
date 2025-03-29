@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendQuick</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <div id="homeScreen">
+            <h2>ATTENDQUICK<br>Sering National High School</h2>
+            <button onclick="showSection('scanSection'); startScanner();">Scan ID</button>
+            <button onclick="showSection('generateSection')">Generate ID</button>
+            <button onclick="viewRecords()">View Records</button>
+        </div>
+
+        <!-- QR Scanner Section -->
+<div id="scanSection" class="hidden">
+    <h2>Scan QR Code</h2>
+    <select id="scanMode">
+        <option value="Arrival">Arrival</option>
+        <option value="Departure">Departure</option>
+    </select>
+    <div id="reader"></div>
+    
+    <!-- ✅ NEW: Display scanned QR code details here -->
+    <p id="scanResult" style="color: green; font-weight: bold;"></p>
+
+    <button onclick="startScanner()">Start Scanner</button>
+    <button onclick="stopScanner()">Stop Scanner</button>
+    <button onclick="showSection('homeScreen'); stopScanner();">Back</button>
+</div>
+
+      
+      <!-- ID Generator Section -->
+<div id="generateSection" class="hidden">
+    <h2>Generate School ID</h2>
+    
+    <input type="text" id="studentName" placeholder="Student Name">
+    <input type="text" id="studentLRN" placeholder="LRN Number">
+    <input type="text" id="parentGuardian" placeholder="Parent/Guardian">
+    <input type="text" id="address" placeholder="Address">
+    <input type="text" id="contactInfo" placeholder="Contact Information">
+    <input type="date" id="birthday">
+    
+    <select id="gradeLevel">
+        <option value="JUNIOR HIGH">Junior High</option>
+        <option value="SENIOR HIGH">Senior High</option>
+    </select>
+
+    <input type="file" id="studentImage" accept="image/*">
+    <button onclick="generateID()">Generate ID</button>
+
+    <!-- Preview Section -->
+    <div id="idContainer">
+        <div id="idFront" class="id-card">
+            <div class="id-header">
+                <img src="https://i.imgur.com/hrPP04v.png" alt="School Logo Left" class="school-logo left">
+                <p>Republic of the Philippines<br>
+                    Department of Education<br>
+                    Caraga Region<br>
+                    Dinagat Islands Division<br>
+                    Rizal I District 
+                </p>
+                <h4>SERING NATIONAL HIGH SCHOOL<br>304844</h4>
+                <img src="https://i.imgur.com/MeIPrhb.png" alt="School Logo Right" class="school-logo right">
+            </div>
+
+            <div class="id-photo">
+                <img id="previewPhoto" src="" alt="Student Photo">
+            </div>
+            
+            <h3 id="previewName">[Student Name]</h3>
+            <p id="previewLRN">LRN: [LRN]</p>
+            
+            <div id="qrcode"></div>
+
+            <p class="school-head">
+                <span>FELICIDAD B. DUTOSME</span> <br>
+                School Head
+            </p>
+        </div>
+
+        <div id="idBack" class="id-card">
+            <h2 id="previewGradeLevel">[Junior/Senior High]</h2>
+            <div class="signature-box">Student Signature</div>
+            <p>In case of emergency, notify:</p>
+            <p id="previewGuardian"><b>[Parent/Guardian]</b><br>Parent/Guardian</p>
+            <p id="previewAddress">Address: [Address]</p>
+            <p>Contact: <span id="previewContact">[Contact]</span></p>
+            <p>Birthday: <span id="previewBirthday">[Birthday]</span></p>
+
+            <div class="validity">
+                <p>VALID UNTIL:</p>
+                <p><span id="previewExpiration">May 31, 2026</span></p>
+                <p>Please email us at 304844@deped.gov.ph</p>
+            </div>
+
+            <div class="logos">
+                <img src="https://i.imgur.com/ne44x1d.jpeg" alt="Department Logos">
+            </div>
+        </div>
+    </div>
+
+    <!-- Download and Back Buttons -->
+    <button onclick="downloadID()">Download ID</button>
+    <button onclick="showSection('homeScreen')">Back</button>
+</div>
+
+
+
+
+        <!-- Attendance Records -->
+          <div id="recordsSection" class="hidden">
+            <h2>Attendance Records</h2>
+            <table id="recordTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>LRN</th>
+                        <th>Date & Time</th>
+                        <th>Mode</th>
+                    </tr>
+                </thead>
+                <tbody id="recordBody">
+                    <!-- Attendance records will be inserted here -->
+                </tbody>
+            </table>
+            <button onclick="clearRecords()">Clear Records</button>
+            <button onclick="showSection('homeScreen')">Back</button>
+            <button onclick="exportToExcel()">Download Excel</button>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
