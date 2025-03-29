@@ -1,0 +1,185 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #29fff4, #e902fa);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    background-color: #a55eea;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+button:hover {
+    background-color: #7d5fff;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+#reader {
+    width: 300px;
+    margin: auto;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    background: white;
+    color: black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#idPreview {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#idContainer {
+     display: flex;
+    flex-direction: row;
+    gap: 5px; /* Adjust this to control spacing */
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.id-card {
+    width: 320px;
+    height: 545px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 3px solid purple;
+}
+
+.id-header {
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.school-logo {
+    width: 60px; /* Adjust size */
+    height: 60px;
+    position: absolute;
+    top: 5px;
+}
+
+.school-logo.left {
+    left: 5px; /* Adjust spacing for left logo */
+}
+
+.school-logo.right {
+    right: 5px; /* Adjust spacing for right logo */
+}
+
+.id-header p {
+    flex: 1;
+    text-align: center;
+}
+
+
+.id-photo {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border: 2px solid black;
+}
+
+#previewPhoto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.school-head {
+    font-size: 12px;
+    font-weight: bold;
+ 
+}
+
+.signature-box {
+    border: 2px dashed black;
+    height: 90px;
+    margin: 10px;
+    font-size: 12px;
+    text-align: below center;
+    line-height: 150px;
+}
+
+.validity {
+    background: #41bdf2 ;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+   line-height: 3px;
+}
+
+.logos {
+    display: flex;
+    justify-content: center; /* Centers the image */
+    align-items: center; /* Aligns it properly */
+    margin-top: 28px; /* Adds space between text and logos */
+}
+
+.logos img {
+    max-width: 100%; /* Ensures it scales within the card */
+    width: 320px; /* Adjust width to fit inside the ID card */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes extra spacing */
+}
+
+
+
+#recordsList {
+    list-style: none;
+    padding: 0;
+}
+
+#recordsList li {
+    background: white;
+    color: black;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 125px; /* Adjust based on your QR size */
+    height: 125px;
+}
